@@ -17,12 +17,12 @@ class Login extends Component {
   formSubmit(e){
     e.preventDefault();
     axios
-      .post('http://localhost:8080/login',this.state)
+      .post('/login',this.state)
       .then((res) => {
         console.log(res);
         if (res.status === 200){
           localStorage.authToken = res.data.token;
-          location.href = "http://localhost:3000/portfolio/?username=" + this.state.username;
+          location.href = "/portfolio/?username=" + this.state.username;
         }
       })
       .catch((err)=>{
@@ -89,14 +89,14 @@ class Register extends Component {
   }
 
   backToLogin(){
-     location.href="http://localhost:3000/login"; 
+     location.href="/login"; 
   }
 
   //will go to the server to check the password and see if the hashes are equal, and then allow access
   formSubmit(e){
     e.preventDefault();
     axios
-      .post('http://localhost:8080/encrypt',this.state)
+      .post('/encrypt',this.state)
       .then( (res) =>{
         console.log(res);
         this.backToLogin();

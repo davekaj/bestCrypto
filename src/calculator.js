@@ -4,7 +4,7 @@ import axios from 'axios';
 import UserGraph from './usergraph.js';
 
 const currency = 'https://openexchangerates.org/api/latest.json?app_id=08f3469489ec48b9a3d673bd4dbace51'
-const backendServer = 'http://localhost:8080';
+const backendServer = './../server.js'
 
 //main component of the app is the calculator. it does most of the work 
 class Calculator extends React.Component {
@@ -35,12 +35,12 @@ class Calculator extends React.Component {
 		let username = searchParams.get("username")
 		//checks authorization of the person trying to log in.
 		if (localStorage.authToken !== "undefined" && localStorage.authToken !== undefined && localStorage.authToken !== null && username !== null) {
-			axios.get('http://localhost:8080/private/' + localStorage.authToken)
+			axios.get('/private/' + localStorage.authToken)
 				.then((res) => {
 					//console.log(res);
 					if (res.status === 200) {
 						let tokenData = res.data;
-						axios.get("http://localhost:8080/getPortfolio?username=" + username)
+						axios.get("/getPortfolio?username=" + username)
 							.then((res) => {
 								if (res.status === 200) {
 									this.setState(
@@ -58,7 +58,7 @@ class Calculator extends React.Component {
 									this may be why sometimes by graph does not render^^^^^^^^^^^^^ */
 									let stringAllCryptosForHistory = JSON.stringify(this.state.singleCrypto)
 									//console.log(stringAllCryptosForHistory);
-									axios.get("http://localhost:8080/graphData?userCryptos=" + stringAllCryptosForHistory)
+									axios.get("/graphData?userCryptos=" + stringAllCryptosForHistory)
 										.then((res) => {
 											this.setState({
 												graphData: res.data
@@ -75,7 +75,7 @@ class Calculator extends React.Component {
 					}
 				})
 		} else {
-			location.href = 'http://localhost:3000/login';
+			location.href = '/login';
 		}
 
 		//	let userCurrencysForHistory = this.state;
@@ -88,7 +88,7 @@ class Calculator extends React.Component {
 	addCryptoLine(newItem) {
 		//getting the three letter symbol, like ETH, or GNT
 		let newItemSymbol = "";
-		let getThreeLetterSymbol = axios.get(`${backendServer}/cmcAPI`);
+		let getThreeLetterSymbol = axios.get(`/cmcAPI`);
 		getThreeLetterSymbol.then(response => {
 			for (let j = 0; j < response.data.length; j++) {
 				if (newItem.toLowerCase() === response.data[j].name.toLowerCase()) {
@@ -153,7 +153,7 @@ class Calculator extends React.Component {
 
 	// calling the API to the backend server, which connects to coinmarketcap, which must be done because of CORS
 	updateCryptoPricesAPI(neededForOriginalPrice) {
-		let getListOfCoins = axios.get(`${backendServer}/cmcAPI`);
+		let getListOfCoins = axios.get(`/cmcAPI`);
 		getListOfCoins.then(response => {
 			let updateAllPrices = this.state.singleCrypto.slice();
 			//did a double for loop, as I couldn't figure out which higher order functions to choose. this loop finds all the existing cryptos [i] and then goes out and loops all cryptos till it finds the [j] crypto and its USD price
@@ -240,14 +240,14 @@ class Calculator extends React.Component {
 		let searchParams = new URLSearchParams(queryString);
 		let username = searchParams.get("username")
 		let stringCryptoData = JSON.stringify(this.state.singleCrypto);
-		axios.put("http://localhost:8080/updatePortfolio?username=" + username + "&portfolio=" + stringCryptoData)
+		axios.put("/updatePortfolio?username=" + username + "&portfolio=" + stringCryptoData)
 			.then((res) => {
 				if (res.status === 200) {
 					console.log("database updated successfully");
 				}
 			})
 		if (this.flag === false) {
-			axios.get("http://localhost:8080/graphData?userCryptos=" + stringCryptoData)
+			axios.get("/graphData?userCryptos=" + stringCryptoData)
 				.then((res) => {
 					this.setState({
 						graphData: res.data
@@ -405,7 +405,7 @@ class AddNewCrypto extends React.Component {
 	//grabs the full list of the top cryptos and  allows them to be available for the dropown
 	listofAllCryptoCoinsAPI() {
 		let allCoins = [];
-		let listOfAllCoins = axios.get(`${backendServer}/cmcAPI`);
+		let listOfAllCoins = axios.get(`/cmcAPI`);
 		listOfAllCoins.then(response => {
 			for (let i = 0; i < response.data.length; i++) {
 				allCoins.push(response.data[i].name)
