@@ -1,0 +1,25 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  color: white;
+  background-color: black;
+  font-style: bold;
+}
+
+
+h1{
+  text-align: center;
+  color: white;
+}
+
+#auth{
+  width:400px;
+  margin:100px auto;
+}
+
+#auth .no-warning{
+    display:none;
+  }
+
+

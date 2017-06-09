@@ -1,0 +1,216 @@
+/***************************HTML TAGS****************/
+input[type=text] {
+    background-color: white;
+    color: black;
+    border: 2px solid white;
+    border-radius: 5px;
+    padding: 5px;
+}
+/**********************CLASSES*********************/
+.customList {
+  background-color: #061D25;
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+  border: 2px solid black;
+  border-radius: 20px;
+  text-align: center
+}
+.white{
+  color: white;
+}
+.about {
+  background: #ffffff;
+  border-radius: 5px;
+  color: #015249;
+  font-size: 20px;
+}
+
+.howToParagraph {
+  font-weight: bold;
+  text-align:center;
+}
+
+
+.btn {
+  background: #015249;
+  border-radius: 5px;
+  color:white;
+  
+  
+}
+
+.btn:hover {
+  color:white;
+}
+
+.btn-delete {
+  background: red;
+  border: 2px solid red;
+  border-radius: 7px;
+  color: black;
+  text-decoration: none;
+  padding: 5px 5px;
+  font-size: 30px;  
+}
+.dropdown {
+  background: #015249;
+  border-radius: 5px;
+  color: white;
+  margin-right: 13px;
+  margin-bottom: 5px;
+  float: right;
+  border: 1px black solid;
+}
+.list-text {
+  font-weight: bold;
+}
+/**********************ID's*********************/
+#gains {
+  color: green;
+}
+#losses {
+  color: red;
+}
+#summary-header {
+  font-size: 30px;
+}
+#borderBottom {
+  border-bottom: 2px black solid;
+}
+#addBtn {
+  height: 35px;
+}
+/**********************MEDIA QUEIRES*********************/
+/* LG ONLY*/
+@media only screen and (min-width: 1200px) {
+    .btn-delete {
+      position: absolute;
+      left: 30px;
+      top: 15px;
+    }
+}
+/* MD & LG*/
+@media only screen and (min-width: 992px) {
+    .btn-delete {
+      position: absolute;
+      left: 30px;
+      top: 15px;
+    }
+}
+/* MD ONLY*/
+@media only screen and (min-width: 992px) and (max-width: 1200px){
+
+}
+/* SM ONLY*/
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+    .btn-delete {
+      position: absolute;
+      left: 10px;
+      top: 40px;
+    } 
+    input {
+      margin-bottom: 5px;
+    }
+}
+/* XS ONLY*/
+@media only screen and (max-width: 768px) {
+
+}
+/*everything EXCEPT XS*/
+@media only screen and (min-width: 768px) {
+
+}
+
+
+
+
+
+/*************************NAV BAR STARTS ****************************/
+.header{
+	background-color:#061D25;
+	box-shadow:0 1px 1px #ccc;
+	padding: 20px 40px;
+  margin-bottom: 50px;
+	height: 80px;
+	color: #ffffff;
+	box-sizing: border-box;
+}
+
+.header h1 {
+  font-size: 30px;
+}
+
+.header a {
+  color: #70726F;
+  font-size: 15px;
+  line-height: 60px;
+  padding: 5px;
+  transition: all .5s ease;
+}
+
+.header a:hover {
+  color: white;
+}
+.header span {
+  text-align: right;
+}
+
+
+/* XS ONLY*/
+@media only screen and (max-width: 768px) {
+    .header {
+      height: 200px;
+      padding: 20px 20px;
+    } 
+
+}
+
+/*************************NAV BAR ENDS ****************************/
+
+  /*************************FOOTER BEGINS ****************************/
+
+html {
+  margin-bottom: 75px; 
+}
+
+.footer {
+  background: #061D25;
+  padding: 10px 0;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  color: #70726F;
+
+}
+.footer a {
+  color: #70726F;
+  font-size: 20px;
+  padding: 10px;
+  border-right: 1px solid #70726F;
+  transition: all .5s ease;
+}
+
+/* XS FITTNING SOCIAL MEDIA ICONS*/
+@media only screen and (max-width: 768px) {
+  .footer a {
+    padding: 5px;
+  }
+}
+
+.footer a:first-child {
+  border-left: 1px solid #70726F;
+}
+.footer a:hover {
+  color: white;
+}
+
+#sendToBottom {
+  clear: both;
+}
+
+.footer span {
+  text-align: right;
+}
+
+/*************************FOOTER ENDS****************************/
